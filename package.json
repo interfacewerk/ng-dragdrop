@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "angular": "^1.5.3",
+    "cz-conventional-changelog": "^1.1.5",
     "gulp": "^3.9.1",
     "gulp-clang-format": "^1.0.23",
     "gulp-concat": "^2.6.0",
@@ -24,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/interfacewerk/ng-dragdrop/issues"
   },
-  "homepage": "https://github.com/interfacewerk/ng-dragdrop#readme"
+  "homepage": "https://github.com/interfacewerk/ng-dragdrop#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
