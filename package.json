@@ -1,0 +1,28 @@
+{
+  "name": "ng-dragdrop",
+  "version": "0.0.1",
+  "description": "This library provides your angular app with nice drag-and-drops implementation",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.3",
+    "gulp": "^3.9.1",
+    "gulp-clang-format": "^1.0.23",
+    "gulp-concat": "^2.6.0",
+    "gulp-sequence": "^0.4.5",
+    "gulp-typescript": "^2.12.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/interfacewerk/ng-dragdrop.git"
+  },
+  "author": "interfacewerk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/interfacewerk/ng-dragdrop/issues"
+  },
+  "homepage": "https://github.com/interfacewerk/ng-dragdrop#readme"
+}

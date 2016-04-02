@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../dist/ng1/ng-dragdrop.js"></script>
+  <script src="demo.js"></script>
+  <style>
+
+    div[ng-draggable] {
+      color: white;
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+    }
+
+    div[ng-droppable] {
+      color: white;
+      background-color: red;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body ng-app="Demo">
+  <div ng-controller="MyFirstController">
+    <div ng-draggable="{typeA: valueA}">
+      {{valueA}}
+    </div>
+
+    <div ng-draggable="{typeB: valueB}">
+      {{valueB}}
+    </div>
+  </div>
+  <div ng-controller="MySecondController">
+    <div ng-droppable="{typeA: 'onTypeADragged($data)', typeB: 'onTypeBDragged($data)'}">
+      Drop stuff here!
+    </div>
+    <ul>
+      <li ng-repeat="d in dragged">
+        {{d.type}}: {{d.value}}
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
