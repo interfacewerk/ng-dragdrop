@@ -1,6 +1,7 @@
 (function() {
 
 
+  var droppableOverClass = 'ng-droppable-over';
   function makeDraggable(element, data) {
     element.setAttribute('draggable', 'true');
     var dragstart = function(dragEvent) {
@@ -15,14 +16,14 @@
       dragEvent.preventDefault();
       dragEvent.dataTransfer.dropEffect = 'move';
     };
-    var dragenter = function() { element.classList.add('gl-droppable-over'); };
+    var dragenter = function() { element.classList.add(droppableOverClass); };
     var dragleaveAndend = function() {
-      element.classList.remove('gl-droppable-over');
+      element.classList.remove(droppableOverClass);
     };
     var drop = function(dragEvent) {
       dragEvent.preventDefault();
       var data = JSON.parse(dragEvent.dataTransfer.getData('text/json'));
-      element.classList.remove('gl-droppable-over');
+      element.classList.remove(droppableOverClass);
       onDrop(data);
     };
     element.addEventListener('drop', drop);
