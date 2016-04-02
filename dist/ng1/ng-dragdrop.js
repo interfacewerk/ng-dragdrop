@@ -27,12 +27,14 @@
     };
     element.addEventListener('drop', drop);
     element.addEventListener('dragover', dragover);
-    element.addEventListener('dragleave dragend', dragleaveAndend);
+    element.addEventListener('dragleave', dragleaveAndend);
+    element.addEventListener('dragend', dragleaveAndend);
     element.addEventListener('dragenter', dragenter);
     return function() {
       element.removeEventListener('drop', drop);
       element.removeEventListener('dragover', dragover);
-      element.removeEventListener('dragleave dragend', dragleaveAndend);
+      element.removeEventListener('dragleave', dragleaveAndend);
+      element.removeEventListener('dragend', dragleaveAndend);
       element.removeEventListener('dragenter', dragenter);
     };
   }
