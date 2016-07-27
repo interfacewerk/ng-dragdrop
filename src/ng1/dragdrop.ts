@@ -32,7 +32,18 @@ class NGDraggable {
 		$parse: ng.IInterpolateService
 	) {
 		var parsed = $parse($attrs['ngDraggable']);
-		var handler = makeDraggable($element[0], () => parsed($scope));
+		var ondragstart = (data: Object) => {
+			if($attrs['ngDraggableDragstart']) {
+				$scope.$eval($attrs['ngDraggableDragstart'], {$data: data})
+			}
+		}
+    var ondragend = () => {
+			if($attrs['ngDraggableDragend']) {
+				$scope.$eval($attrs['ngDraggableDragend'])
+			}
+		}
+
+		var handler = makeDraggable($element[0], () => parsed($scope), ondragstart, ondragend);
 
 		$scope.$on('$destroy', handler);
 	}
@@ -56,7 +67,8 @@ class NGDroppable {
 		$parse: ng.IParseService
 	) {
 		var callbacks = $parse($attrs['ngDroppable'])($scope);
-		$scope.$on('$destroy', makeDroppable($element[0], (data) => {
+
+		var onDrop = (data) => {
 			for(var key in data) {
 				if (callbacks[key]) {
 					$scope.$eval(callbacks[key], {
@@ -65,7 +77,8 @@ class NGDroppable {
 				}
 			}
       $scope.$apply();
-		}));
+		}
+		$scope.$on('$destroy', makeDroppable($element[0], onDrop));
 	}
 
 }
