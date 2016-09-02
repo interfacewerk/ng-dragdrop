@@ -26,6 +26,7 @@ function makeDroppable(element: HTMLElement, onDrop:(data:Object) => any) {
   var dragover = (dragEvent:DragEvent) => {
     dragEvent.preventDefault();
     dragEvent.dataTransfer.dropEffect = 'move';
+    element.classList.add(droppableOverClass);
   };
 
   var dragenter = () => {

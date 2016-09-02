@@ -26,7 +26,7 @@ gulp.task('build-ng1-ts', function () {
   return gulp.src([
     'src/commons.ts',
     'src/ng1/**/*.ts',
-    'typings/browser/**/*.ts'
+    'typings/**/*.ts'
   ])
   .pipe(ts({
     noImplicitAny: false,
