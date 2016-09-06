@@ -43,7 +43,7 @@ class NGDraggable {
 			}
 		}
 
-		var handler = makeDraggable($element[0], () => parsed($scope), ondragstart, ondragend);
+		var handler = makeDraggable($element[0], () => parsed($scope), ondragstart, ondragend, $attrs['ngDragImage']);
 
 		$scope.$on('$destroy', handler);
 	}

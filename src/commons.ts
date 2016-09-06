@@ -1,11 +1,12 @@
 var droppableOverClass = 'ng-droppable-over';
 
-function makeDraggable(element: HTMLElement, data:() => Object, onDragstart: (data: Object) => any, onDragend: (data: Object) => any) {
+function makeDraggable(element: HTMLElement, data:() => Object, onDragstart: (data: Object) => any, onDragend: (data: Object) => any, dragImage?: string) {
   element.setAttribute('draggable', 'true');
 
   var dragstart = (dragEvent:DragEvent) => {
     dragEvent.dataTransfer.effectAllowed = 'move';
     dragEvent.dataTransfer.setData('text/json', JSON.stringify(data()));
+    if (dragImage && dragEvent.dataTransfer['setDragImage']) dragEvent.dataTransfer['setDragImage'](dragImage, 0, 0);
 		onDragstart(data());
   };
 

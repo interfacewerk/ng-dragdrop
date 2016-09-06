@@ -2,11 +2,12 @@
 
 
   var droppableOverClass = 'ng-droppable-over';
-  function makeDraggable(element, data, onDragstart, onDragend) {
+  function makeDraggable(element, data, onDragstart, onDragend, dragImage) {
     element.setAttribute('draggable', 'true');
     var dragstart = function(dragEvent) {
       dragEvent.dataTransfer.effectAllowed = 'move';
       dragEvent.dataTransfer.setData('text/json', JSON.stringify(data()));
+      if (dragImage) dragEvent.dataTransfer.setDragImage(dragImage, 0, 0);
       onDragstart(data());
     };
     var dragend = function() { onDragend(data()); };
@@ -68,7 +69,7 @@
       };
       var handler = makeDraggable($element[0], function() {
         return parsed($scope);
-      }, ondragstart, ondragend);
+      }, ondragstart, ondragend, $attrs['ngDragImage']);
       $scope.$on('$destroy', handler);
     }
     NGDraggable.$inject = ['$element', '$scope', '$attrs', '$parse'];
