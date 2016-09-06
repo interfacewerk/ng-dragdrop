@@ -6,7 +6,8 @@ function makeDraggable(element: HTMLElement, data:() => Object, onDragstart: (da
   var dragstart = (dragEvent:DragEvent) => {
     dragEvent.dataTransfer.effectAllowed = 'move';
     dragEvent.dataTransfer.setData('text/json', JSON.stringify(data()));
-    if (dragImage && dragEvent.dataTransfer['setDragImage']) dragEvent.dataTransfer['setDragImage'](dragImage, 0, 0);
+    if (dragImage !== undefined && dragEvent.dataTransfer['setDragImage'] !== undefined) 
+      dragEvent.dataTransfer['setDragImage'](angular.element('<img>').attr('src', dragImage).get(0), 0, 0);
 		onDragstart(data());
   };
 

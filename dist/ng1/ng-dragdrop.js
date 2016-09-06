@@ -7,7 +7,7 @@
     var dragstart = function(dragEvent) {
       dragEvent.dataTransfer.effectAllowed = 'move';
       dragEvent.dataTransfer.setData('text/json', JSON.stringify(data()));
-      if (dragImage) dragEvent.dataTransfer.setDragImage(dragImage, 0, 0);
+      if (dragImage) dragEvent.dataTransfer['setDragImage'](dragImage, 0, 0);
       onDragstart(data());
     };
     var dragend = function() { onDragend(data()); };
